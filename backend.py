@@ -26,4 +26,6 @@ class Database:
     def update(self,id, title, author, year, isbn):
         self.curs.execute("UPDATE book SET title=?, author=?, year=?, isbn=? WHERE id=?",(title,author,year,isbn,id))
         self.db.commit()
-       
+
+    def __del__(self):
+        self.db.close()  
